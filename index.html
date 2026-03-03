@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Mời Thôi Nôi - Tống Linh Đan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@300;400;500;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fff5f7;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Cho phép bắt đầu từ đỉnh để scroll */
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        .font-cursive { font-family: 'Dancing Script', cursive; }
+        .font-pacifico { font-family: 'Pacifico', cursive; }
+        
+        .bg-pattern {
+            background-image: radial-gradient(#ffcad4 1px, transparent 1px);
+            background-size: 20px 20px;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        #bubble-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100; 
+        }
+
+        .bubble-group {
+            position: absolute;
+            bottom: -150px;
+            animation: rise linear infinite;
+        }
+
+        .bubble {
+            border-radius: 50%;
+            opacity: 0.6;
+            position: relative;
+            box-shadow: inset -5px -5px 10px rgba(255,255,255,0.4), 
+                        0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .string {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            width: 1.5px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.4);
+            transform-origin: top center;
+            animation: sway 2s ease-in-out infinite;
+        }
+
+        @keyframes rise {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-120vh) translateX(60px) rotate(10deg); opacity: 0; }
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: translateX(-50%) rotate(-10deg); }
+            50% { transform: translateX(-50%) rotate(10deg); }
+        }
+
+        .main-card {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            border: 8px solid #ffe5ec;
+            border-radius: 50px 5px 50px 5px;
+            box-shadow: 0 20px 60px rgba(255, 182, 193, 0.4);
+            z-index: 10;
+            position: relative;
+            width: 90%;
+            max-width: 420px;
+            padding: 2.5rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .gold-text {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .baby-photo-frame {
+            width: 200px;
+            height: 200px;
+            margin: 1.5rem auto;
+            position: relative;
+        }
+
+        .baby-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid white;
+            box-shadow: 0 10px 30px rgba(255, 182, 193, 0.6);
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+
+    <div id="bubble-container"></div>
+
+    <div class="main-card text-center">
+        <!-- Decor góc -->
+        <div class="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-pink-100 rounded-tl-[40px] m-4"></div>
+        <div class="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-pink-100 rounded-br-[40px] m-4"></div>
+
+        <div class="relative z-10 flex flex-col gap-6">
+            <!-- Tiêu đề -->
+            <div>
+                <h2 class="text-pink-400 font-bold tracking-widest uppercase text-xs mb-2">Lời mời trân trọng</h2>
+                <h1 class="font-pacifico text-3xl sm:text-4xl text-pink-500">Mừng Thôi Nôi</h1>
+            </div>
+            
+            <!-- Tên bé -->
+            <div>                
+                <h2 class="font-cursive text-5xl sm:text-6xl gold-text py-2">Tống Linh Đan</h2>
+                <p class="text-pink-400 text-sm sm:text-base font-semibold tracking-widest mt-2">(Tên thường gọi: Elsa)</p>
+            </div>
+
+            <!-- Ảnh bé -->
+            <div class="baby-photo-frame">
+                <div class="absolute inset-0 bg-pink-100 rounded-full animate-pulse opacity-30 scale-110"></div>
+                <img src="./elsa.jpg" alt="Bé Tống Linh Đan" onerror="this.src='https://placehold.co/400x400/ffe5ec/ff69b4?text=Linh+Đan'">
+            </div>
+
+            <!-- Nội dung lời mời -->
+            <div class="space-y-6 text-gray-700">
+                <p class="px-4 leading-relaxed text-sm sm:text-base italic">
+                    "Cảm ơn con đã đến bên ba mẹ, <br> làm cho thế giới của ba mẹ trở nên rực rỡ hơn."
+                </p>
+                
+                <p class="px-2 leading-relaxed text-sm sm:text-base">
+                    Trân trọng kính mời quý khách đến dự tiệc mừng bé <b>Linh Đan</b> tròn một tuổi trong sự yêu thương của gia đình.
+                </p>
+
+                <!-- Thông tin thời gian -->
+                <div class="border-y-2 border-pink-100 py-4 my-4">
+                    <div class="flex justify-around items-center">
+                        <div class="flex flex-col">
+                            <span class="text-[10px] uppercase text-gray-400 font-bold mb-1">Vào lúc</span>
+                            <span class="font-bold text-2xl text-pink-600">11:00</span>
+                        </div>
+                        <div class="h-12 w-[2px] bg-pink-100"></div>
+                        <div class="flex flex-col">
+                            <span class="text-[10px] uppercase text-gray-400 font-bold mb-1">Ngày</span>
+                            <span class="font-bold text-2xl text-pink-600">19/04/2026</span>
+                            <span class="text-xs italic text-gray-500 mt-1">(Tức 03/03 Âm Lịch)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Địa điểm -->
+                <div class="bg-pink-50/50 rounded-2xl p-5 border border-pink-100 mx-auto w-full">
+                    <p class="text-[10px] uppercase text-gray-400 font-bold mb-2">Tại địa điểm</p>
+                    <p class="font-bold text-gray-800 text-lg mb-1">LÀNG NƯỚNG NAM BỘ</p>
+                    <p class="text-sm text-gray-600 leading-tight font-medium">302A Tô Hiến Thành, P.15, Q.10, TP.HCM</p>
+                </div>
+            </div>
+
+            <!-- Chân thiệp -->
+            <div class="mt-4">
+                <p class="text-xs text-gray-400 italic font-medium px-4 leading-relaxed">
+                    Sự hiện diện của quý vị là niềm hạnh phúc lớn lao và là món quà ý nghĩa nhất dành cho bé và gia đình chúng tôi!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createBubbles() {
+            const container = document.getElementById('bubble-container');
+            const colors = [
+                'rgba(255, 182, 193, 0.4)', 'rgba(173, 216, 230, 0.4)', 
+                'rgba(255, 253, 208, 0.4)', 'rgba(221, 160, 221, 0.4)', 
+                'rgba(152, 251, 152, 0.4)'
+            ];
+
+            const createBubbleGroup = () => {
+                const group = document.createElement('div');
+                group.className = 'bubble-group';
+                
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                
+                const size = Math.random() * 35 + 20;
+                bubble.style.width = size + 'px';
+                bubble.style.height = (size * 1.1) + 'px';
+                bubble.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                const string = document.createElement('div');
+                string.className = 'string';
+                string.style.height = (Math.random() * 30 + 50) + 'px';
+
+                group.appendChild(bubble);
+                group.appendChild(string);
+                
+                group.style.left = Math.random() * 100 + 'vw';
+                const duration = Math.random() * 8 + 8;
+                group.style.animationDuration = duration + 's';
+                group.style.zIndex = Math.random() > 0.6 ? 110 : 5;
+
+                container.appendChild(group);
+                setTimeout(() => { group.remove(); }, duration * 1000);
+            };
+
+            setInterval(createBubbleGroup, 1000);
+            for(let i=0; i<8; i++) {
+                setTimeout(createBubbleGroup, Math.random() * 5000);
+            }
+        }
+
+        window.onload = createBubbles;
+    </script>
+</body>
+</html>
