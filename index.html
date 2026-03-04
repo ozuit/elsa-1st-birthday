@@ -15,7 +15,7 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Cho phép bắt đầu từ đỉnh để scroll */
+            align-items: flex-start;
             padding-top: 2rem;
             padding-bottom: 2rem;
         }
@@ -91,14 +91,29 @@
             position: relative;
             width: 90%;
             max-width: 420px;
-            padding: 2.5rem 1.5rem;
+            padding: 2.5rem 1rem;
             margin-bottom: 2rem;
+            box-sizing: border-box;
         }
 
         .gold-text {
             background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* Auto-scale cho tên bé để không bao giờ rớt dòng */
+        .baby-name-container {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .baby-name-text {
+            white-space: nowrap;
+            /* Sử dụng font-size dựa trên chiều rộng container (vw) nhưng có giới hạn min/max */
+            font-size: clamp(2.5rem, 12vw, 4rem); 
+            display: inline-block;
+            width: 100%;
         }
 
         .baby-photo-frame {
@@ -136,16 +151,16 @@
                 <h1 class="font-pacifico text-3xl sm:text-4xl text-pink-500">Mừng Thôi Nôi</h1>
             </div>
             
-            <!-- Tên bé -->
-            <div>                
-                <h2 class="font-cursive text-5xl sm:text-6xl gold-text py-2">Tống Linh Đan</h2>
-                <p class="text-pink-400 text-sm sm:text-base font-semibold tracking-widest mt-2">(Tên thường gọi: Elsa)</p>
+            <!-- Tên bé với Auto-scale -->
+            <div class="baby-name-container">                
+                <h2 class="font-cursive gold-text baby-name-text py-2">Tống Linh Đan</h2>
+                <p class="text-pink-400 text-sm sm:text-base font-semibold tracking-widest mt-1">(Tên thường gọi: Elsa)</p>
             </div>
 
             <!-- Ảnh bé -->
             <div class="baby-photo-frame">
                 <div class="absolute inset-0 bg-pink-100 rounded-full animate-pulse opacity-30 scale-110"></div>
-                <img src="./elsa.jpg" alt="Bé Tống Linh Đan" onerror="this.src='https://placehold.co/400x400/ffe5ec/ff69b4?text=Linh+Đan'">
+                <img src="84e64268338cbdd2e49d.jpg" alt="Bé Tống Linh Đan" onerror="this.src='https://placehold.co/400x400/ffe5ec/ff69b4?text=Linh+Đan'">
             </div>
 
             <!-- Nội dung lời mời -->
